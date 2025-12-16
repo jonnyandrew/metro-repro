@@ -5,7 +5,6 @@ import dev.zacsweers.metro.DependencyGraph
 import dev.zacsweers.metro.GraphExtension
 import dev.zacsweers.metro.Provides
 import dev.zacsweers.metro.createDynamicGraph
-import dev.zacsweers.metro.createDynamicGraphFactory
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -33,12 +32,12 @@ object FakeBindings {
 class DynamicGraphTest {
     @Test
     fun `replace bindings in subgraph`() {
-        val subRootGraph =
+        val subGraph =
             createDynamicGraph<RootGraph>(FakeBindings)
                 .createSubGraph()
 
         // Fails unexpectedly
-        assertEquals("fake", subRootGraph.value)
+        assertEquals("fake", subGraph.value)
     }
 }
 
