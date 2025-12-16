@@ -9,17 +9,17 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 
 @DependencyGraph
-interface RootGraph : ExtensionGraph.Factory
+interface RootGraph : SubGraph.Factory
 
 @GraphExtension
-interface ExtensionGraph {
+interface SubGraph {
     val value: String
 
     @GraphExtension.Factory
     interface Factory {
         fun createSubGraph(
             @Provides value: String = "real"
-        ): ExtensionGraph
+        ): SubGraph
     }
 }
 
